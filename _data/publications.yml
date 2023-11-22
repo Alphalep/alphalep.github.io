@@ -1,6 +1,6 @@
 main:
 
-  - title: ShiVaNet: Shift Variant Deconvolution using Deep Learning
+  - title: ShiVaNet:Shift Variant Deconvolution using Deep Learning
     authors: <strong>Arnab Ghosh*</strong>, Grover Swartzalnder
     conference_short: WNYISPW
     conference: Western New York Image And Signal Processing Workshop <strong>(WNYISPW)</strong>, 2023.
