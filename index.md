@@ -4,7 +4,7 @@ layout: homepage
 
 ## About Me
 
-I am currently pursuing a Master's Student in Imaging Science from <strong>Rochester Institute of Technology, New York</strong>. My anticipated graduation date is 2023.
+I am currently pursuing a Master's in Imaging Science from <strong>Rochester Institute of Technology, New York</strong>. My anticipated graduation date is 2023.
 
 My current research focus is on <strong>Shift Variant Image Deconvolution</strong>. I have developed a novel deep learning-based image restoration algorithm rooted in physics-informed principles which is called <strong>ShiVaNet</strong>. It has proven highly effective in nullifying shift-variant image blur, surpassing contemporary techniques with a notable improvement of 0.2 dB in PSNR. My research is relevant to microscopic images and can unblur highly blurred images given the point spread function of the microscope.
 
