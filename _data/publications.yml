@@ -3,20 +3,20 @@ main:
   - title: ShiVaNet:Shift Variant Deconvolution using Deep Learning
     authors: <strong>Arnab Ghosh*</strong>, Grover Swartzalnder
     conference_short: IEEE WNYISPW
-    conference: Western New York Image And Signal Processing Workshop <strong>(WNYISPW)</strong>, 2023.
+    conference: IEEE/Western New York Image And Signal Processing Workshop <strong>(WNYISPW)</strong>, 2023.
     #pdf: https://arxiv.org/pdf/2306.00988.pdf
-    code: https://github.com/MrGiovanni/ContinualLearning
+    code: https://github.com/Alphalep/ShiVaNet
     #bibtex: https://bib.yliu.me/MICCAI23.txt
     image: ./assets/img/image_blur_zemax.png
     notes: Early Accept
 
-  - title: "Mnemonics Training: Multi-Class Incremental Learning without Forgetting"
-    authors: <strong>Yaoyao Liu</strong>, Yuting Su, An-An Liu, Bernt Schiele, Qianru Sun
-    conference_short: CVPR
-    conference: IEEE/CVF Conference on Computer Vision and Pattern Recognition <strong>(CVPR)</strong>, 2020.
-    pdf: https://arxiv.org/pdf/2002.10211.pdf
-    code: https://github.com/yaoyao-liu/class-incremental-learning/tree/main/mnemonics-training
-    page: https://class-il.mpi-inf.mpg.de/mnemonics/
-    bibtex: https://class-il.mpi-inf.mpg.de/mnemonics/
-    notes: Oral Presentation
-    image: ./assets/img/teaser_example.png
+  - title: "Prefilter-Equalizer Based Structure: A New Design Strategy for Narrow-band FIR Filters"
+    authors: <strong>Arnab Ghosh</strong>, Subhabrata Roy , Abhijit Chandra
+    conference_short: IEEE ASPCON 
+    conference: IEEE Applied Signal Processing Conference <strong>ASPCON</strong>, 2018.
+    #pdf: https://arxiv.org/pdf/2002.10211.pdf
+    #code: https://github.com/yaoyao-liu/class-incremental-learning/tree/main/mnemonics-training
+    page: https://ieeexplore-ieee-org.ezproxy.rit.edu/stamp/stamp.jsp?tp=&arnumber=8748707&isnumber=8748277
+    #bibtex: https://class-il.mpi-inf.mpg.de/mnemonics/
+    notes: Conference Paper
+    image: ./assets/img/prefilter.png

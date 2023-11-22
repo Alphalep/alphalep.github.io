@@ -10,18 +10,32 @@ My current research focus is on <strong>Shift Variant Image Deconvolution</stron
 
 Previously,I worked as a Senior Engineer in the Computer Vision team at <strong>L&T Technology Services</strong> for 3 years. I played a pivotal role in spearheading the development of <strong>Bird Eye Object Detection</strong>. This involved leading the integration and calibration of cameras for generating a bird's eye view image and developing a highly efficient deep learning pipeline for almost real-time object detection on this unique perspective. Additionally, I made substantial contributions to diverse projects, including Activity Recognition on Jetson TX2 board, Visual Odometry, and Piping and Instrumentation diagram digitization.
 
+I have a Bachelors of Engineering degree in Instrumentation and Electronics Engineering from the reputed Jadavpur University, India. 
+
 ## Research Interests
 
 - **Computer Vision:** Image Restoration, Object Detection , Super-Resolution 
 - **Machine Learning:** Physics Informed Machine Learning, Self Supervised Learning,Normalizing Flow, Vision Transformers 
 
+## Skills
+- **Programming Languages:** Python, C/C++, MATLAB 
+- **Deep Learning Frameworks:** PyTorch, PyTorch Lightning, TensorFlow
+- **Deep Learning:** CNN, RNN, LSTM, Vision Transformers, Generative Adversarial Networks, Auto-Encoders
+- **Computer Vision:** Image Processing, Image Restoration, Image Segmentation
+- **Machine Learning & Numerical Computing Libraries:** OpenCV,NumPy, Scikit-learn,Keras
+- **Mathematics and Statistics:** Linear Algebra, Calculus, Finite Element Methods, Probability and Statistics
+- **Tools& Version Control:** Weights and Biases, Jupyter, VS-Code, Spyder, Git, GitHub
+- **Parallel Programming:** CUDA
+- **Computational Imaging:** Fourier Optical Simulation, Computer Generated Hologram
+
+
 ## News
 
-- **[Feb. 2020]** Our paper about incremental learning is accepted to CVPR 2020.
-- **[Feb. 2020]** We will host the ACM Multimedia Asia 2020 conference in Singapore!
-- **[Sept. 2019]** Our paper about few-shot learning is accepted to NeurIPS 2019.
-- **[Mar. 2019]** Our paper about few-shot learning is accepted to CVPR 2019.
+- **[Nov. 2023]** My paper was awarded the <strong>Best Student Paper Award</strong> at WNYISPW 
+- **[Aug. 2021]** Joined Rochester Institute of Technology as PhD Student.
+- **[Mar. 2020]** Awarded "Employee of the Month" for my contribution to the development of Bird Eye View Object Analytics.
+- **[Aug. 2018]** Joined Larsen and Toubro Technology Services as a Senior Engineer
 
 {% include_relative _includes/publications.md %}
 
-{% include_relative _includes/services.md %}
+<!---{% include_relative _includes/services.md %}-->
