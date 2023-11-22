@@ -2,12 +2,12 @@ main:
 
   - title: ShiVaNet:Shift Variant Deconvolution using Deep Learning
     authors: <strong>Arnab Ghosh*</strong>, Grover Swartzalnder
-    conference_short: WNYISPW
+    conference_short: IEEE WNYISPW
     conference: Western New York Image And Signal Processing Workshop <strong>(WNYISPW)</strong>, 2023.
-    pdf: https://arxiv.org/pdf/2306.00988.pdf
+    #pdf: https://arxiv.org/pdf/2306.00988.pdf
     code: https://github.com/MrGiovanni/ContinualLearning
-    bibtex: https://bib.yliu.me/MICCAI23.txt
-    image: ./assets/img/teaser_example_2.png
+    #bibtex: https://bib.yliu.me/MICCAI23.txt
+    image: ./assets/img/image_blur_zemax.png
     notes: Early Accept
 
   - title: "Mnemonics Training: Multi-Class Incremental Learning without Forgetting"
