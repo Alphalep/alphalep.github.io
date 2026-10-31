@@ -145,6 +145,11 @@
   .mini h3 { font-size: clamp(1.35rem, 2vw, 1.65rem); margin-bottom: 12px; }
   .mini p { margin: 0; max-width: 60ch; }
 
+  /* placeholder for upcoming content */
+  .soon { border-top: 1.5px solid var(--ink); padding: 44px 0 8px; }
+  .soon-title { margin: 0; color: var(--ink); font-size: clamp(1.6rem, 3vw, 2.3rem); font-weight: 650; letter-spacing: -0.02em; line-height: 1.1; }
+  .soon-sub { margin: 10px 0 0; color: var(--muted); }
+
   /* list rows shared by publications, experience, news */
   .rows { list-style: none; margin: 0; padding: 0; border-top: 1.5px solid var(--ink); }
   .rows > li { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 28px; padding: 22px 0; border-bottom: 1px solid var(--line); }
@@ -219,6 +224,7 @@
     <a href="#publications">Publications</a>
     <a href="#experience">Experience</a>
     <a class="opt" href="#projects">Other projects</a>
+    <a class="opt" href="#teaching">Teaching</a>
     <a class="opt" href="#news">News</a>
     <a href="#contact">Contact</a>
   </nav>
@@ -416,6 +422,15 @@
           <div class="inline-links"><a href="https://github.com/alphalep/Computer_Generated_Hologram">Code</a><a href="https://github.com/alphalep/Computer_Generated_Hologram/blob/main/CGH_ARNAB_GHOSH.pdf">Report (PDF)</a></div>
         </div>
       </article>
+    </section>
+
+    <!-- ================= TEACHING & TUTORIALS ================= -->
+    <section id="teaching" class="block" aria-labelledby="teaching-h">
+      <h2 id="teaching-h">Teaching &amp; tutorials</h2>
+      <div class="soon">
+        <p class="soon-title">Coming soon</p>
+        <p class="soon-sub">Course material and coding tutorials will appear here.</p>
+      </div>
     </section>
 
     <!-- ================= NEWS ================= -->
