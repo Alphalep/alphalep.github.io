@@ -138,6 +138,7 @@
   /* other projects: smaller, side-by-side entries */
   .mini { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; align-items: start;
           border-top: 1.5px solid var(--ink); padding-top: 28px; }
+  .mini + .mini { margin-top: 56px; }
   .mini-plate { margin: 0; padding: clamp(14px, 2.4vw, 28px); }
   .mini-plate img { width: 100%; }
   .mini-head { display: flex; justify-content: space-between; gap: 16px; font-size: 0.95rem; color: var(--muted); margin-bottom: 10px; }
@@ -411,6 +412,17 @@
     <!-- ================= OTHER PROJECTS ================= -->
     <section id="projects" class="block" aria-labelledby="projects-h">
       <h2 id="projects-h">Other projects</h2>
+      <article class="mini">
+        <figure class="plate mini-plate" style="margin-left:0;margin-right:0">
+          <img src="assets/img/nlc.jpg" alt="Left: map of the director angle across a twisted liquid-crystal cell, with short rods showing molecular orientation. Right: transmitted light intensity across 120 micrometres between crossed polarizers, oscillating between 0 and 0.5." width="1016" height="1132" loading="lazy">
+        </figure>
+        <div>
+          <div class="mini-head"><span class="year">2022 – 2023</span><span>RIT, graduate research</span></div>
+          <h3>Simulating chiral nematic liquid crystals</h3>
+          <p>Modeled chiral nematic liquid crystals confined between a uniform surface and a periodically patterned one. I simulated the director field (the local molecular orientation) under different boundary constraints with finite-element energy minimization and Monte Carlo Metropolis sampling, and computed the light the cell transmits between crossed polarizers with Mueller calculus.</p>
+          <div class="inline-links"><a href="https://github.com/alphalep/NLC_SIMUL">Code</a></div>
+        </div>
+      </article>
       <article class="mini">
         <figure class="plate mini-plate" style="margin-left:0;margin-right:0">
           <img src="assets/img/hologram.jpg" alt="Left: a detail of the binary hologram pattern of rectangular apertures. Right: the hologram lit by a laser, reconstructing the dollar-sign image in red." width="1052" height="520" loading="lazy">
