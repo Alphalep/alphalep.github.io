@@ -135,6 +135,16 @@
   .work-links a { display: block; padding: 10px 0; color: var(--ink); text-decoration: none; font-weight: 600; }
   .work-links a:hover { color: var(--accent); }
 
+  /* other projects: smaller, side-by-side entries */
+  .mini { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; align-items: start;
+          border-top: 1.5px solid var(--ink); padding-top: 28px; }
+  .mini-plate { margin: 0; padding: clamp(14px, 2.4vw, 28px); }
+  .mini-plate img { width: 100%; }
+  .mini-head { display: flex; justify-content: space-between; gap: 16px; font-size: 0.95rem; color: var(--muted); margin-bottom: 10px; }
+  .mini-head .year { color: var(--ink); font-weight: 700; }
+  .mini h3 { font-size: clamp(1.35rem, 2vw, 1.65rem); margin-bottom: 12px; }
+  .mini p { margin: 0; max-width: 60ch; }
+
   /* list rows shared by publications, experience, news */
   .rows { list-style: none; margin: 0; padding: 0; border-top: 1.5px solid var(--ink); }
   .rows > li { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 28px; padding: 22px 0; border-bottom: 1px solid var(--line); }
@@ -192,6 +202,7 @@
     h2 { margin-bottom: 34px; }
     .work { padding-bottom: 72px; }
     .work-cols { grid-template-columns: 1fr; gap: 18px; }
+    .mini { grid-template-columns: 1fr; gap: 20px; }
     .rows > li, .rows.news > li { grid-template-columns: 1fr; gap: 4px; }
   }
 </style>
@@ -205,6 +216,7 @@
   <p class="side-role">Computational imaging<br>UC Riverside</p>
   <nav class="side-nav" aria-label="Sections">
     <a href="#research">Research</a>
+    <a class="opt" href="#projects">Other projects</a>
     <a href="#publications">Publications</a>
     <a href="#experience">Experience</a>
     <a class="opt" href="#news">News</a>
@@ -302,6 +314,22 @@
             <li><a href="https://repository.rit.edu/theses/11620">Thesis</a></li>
             <li><a href="https://github.com/alphalep/ShiVaNet">Code</a></li>
           </ul>
+        </div>
+      </article>
+    </section>
+
+    <!-- ================= OTHER PROJECTS ================= -->
+    <section id="projects" class="block" aria-labelledby="projects-h">
+      <h2 id="projects-h">Other projects</h2>
+      <article class="mini">
+        <figure class="plate mini-plate" style="margin-left:0;margin-right:0">
+          <img src="assets/img/hologram.jpg" alt="Left: a detail of the binary hologram pattern of rectangular apertures. Right: the hologram lit by a laser, reconstructing the dollar-sign image in red." width="1052" height="520" loading="lazy">
+        </figure>
+        <div>
+          <div class="mini-head"><span class="year">2021</span><span>RIT, Fourier imaging course</span></div>
+          <h3>Computer-generated holography</h3>
+          <p>Encoded the Fourier transform of a 2D image into a printable Lohmann detour-phase hologram: each cell's aperture height stores amplitude and its sideways shift stores phase, with error-diffusion quantization to keep detail. I printed the hologram on film and reconstructed the image optically with a laser.</p>
+          <div class="inline-links"><a href="https://github.com/alphalep/Computer_Generated_Hologram">Code</a><a href="https://github.com/alphalep/Computer_Generated_Hologram/blob/main/CGH_ARNAB_GHOSH.pdf">Report (PDF)</a></div>
         </div>
       </article>
     </section>
