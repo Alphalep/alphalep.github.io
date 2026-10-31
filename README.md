@@ -7,9 +7,9 @@ Plain HTML and CSS, no build step. `.nojekyll` tells GitHub Pages to serve the f
 ## Structure
 
 ```
-index.html                  the whole page (markup + styles)
+index.html                  the whole page (markup, styles, small script)
 assets/img/                 portrait, paper figures, favicon
-assets/fonts/               Archivo and Source Serif 4 (SIL Open Font License), subset to Latin
+assets/fonts/               Archivo variable font (SIL Open Font License), subset to Latin
 assets/files/Arnab_Ghosh_CV.pdf   public CV (no phone number)
 .nojekyll
 ```
