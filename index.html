@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arnab Ghosh — Computational Imaging, UC Riverside</title>
+<meta name="description" content="Arnab Ghosh is a PhD student in Electrical and Computer Engineering at UC Riverside working on computational imaging: optics, sensors, and learned reconstruction.">
+<meta property="og:title" content="Arnab Ghosh — Computational Imaging">
+<meta property="og:description" content="PhD student at UC Riverside building imaging systems end to end: optics, sensors, and learned reconstruction.">
+<meta property="og:image" content="assets/img/avatar.jpg">
+<link rel="icon" href="assets/img/favicon.png">
+<link rel="preload" href="assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/sourceserif4-var.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+  /* ---------- self-hosted fonts (SIL Open Font License) ---------- */
+  @font-face { font-family: "Archivo"; src: url("assets/fonts/archivo-var.woff2") format("woff2");
+    font-weight: 100 900; font-stretch: 62% 125%; font-style: normal; font-display: swap; }
+  @font-face { font-family: "Source Serif 4"; src: url("assets/fonts/sourceserif4-var.woff2") format("woff2");
+    font-weight: 200 900; font-style: normal; font-display: swap; }
+  @font-face { font-family: "Source Serif 4"; src: url("assets/fonts/sourceserif4-italic-var.woff2") format("woff2");
+    font-weight: 200 900; font-style: italic; font-display: swap; }
+  /* ---------- tokens ---------- */
+  :root {
+    --paper: #ffffff;
+    --ink: #17202d;
+    --muted: #5c6677;
+    --rule: #e3e7ee;
+    --accent: #3a2fc4;      /* deep violet, the 405 nm end of the band */
+    --accent-soft: #eeecfb;
+    --display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+    --text: "Source Serif 4", Charter, Georgia, serif;
+    --measure: 64ch;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--text);
+    font-size: 1.0625rem;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
+  a:hover { text-decoration-thickness: 2px; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+  .wrap { max-width: 1060px; margin: 0 auto; padding: 0 28px; }
+
+  /* ---------- top bar ---------- */
+  .top {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 22px 0 0;
+    font-family: var(--display); font-size: 0.95rem;
+  }
+  .top .mark { font-weight: 700; color: var(--ink); text-decoration: none; font-stretch: 112%; }
+  .top nav a { color: var(--muted); text-decoration: none; margin-left: 22px; }
+  .top nav a:hover { color: var(--ink); }
+
+  /* ---------- hero ---------- */
+  .hero { padding: 64px 0 28px; }
+  .hero-grid { display: grid; grid-template-columns: 1fr 200px; gap: 48px; align-items: start; }
+  h1 {
+    font-family: var(--display);
+    font-weight: 750;
+    font-stretch: 125%;
+    font-size: clamp(2.6rem, 6.4vw, 4.9rem);
+    line-height: 0.98;
+    letter-spacing: -0.025em;
+    margin: 0 0 18px;
+  }
+  .role {
+    font-family: var(--display); font-stretch: 100%;
+    font-size: 1.15rem; color: var(--muted); margin: 0 0 26px; line-height: 1.4;
+  }
+  .bio p { max-width: var(--measure); margin: 0 0 14px; }
+  .links { display: flex; flex-wrap: wrap; gap: 10px 12px; margin-top: 24px; font-family: var(--display); font-size: 0.95rem; }
+  .links a {
+    display: inline-block; padding: 7px 14px; border: 1px solid var(--rule); border-radius: 999px;
+    color: var(--ink); text-decoration: none; background: #fff;
+  }
+  .links a:hover { border-color: var(--accent); color: var(--accent); }
+  .links a.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .links a.primary:hover { background: #2a2196; color: #fff; }
+  .portrait { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; margin-top: 6px; }
+
+  /* ---------- the spectrum band ---------- */
+  .spectrum { margin: 52px 0 0; }
+  .band {
+    position: relative; height: 34px; border-radius: 3px; overflow: hidden;
+    background: linear-gradient(90deg,
+      rgb(130,0,200) 0%, rgb(106,0,255) 2.6%, rgb(0,0,255) 6.1%, rgb(0,123,255) 9.6%,
+      rgb(0,213,255) 13%, rgb(0,255,255) 14.8%, rgb(0,255,146) 16.5%, rgb(0,255,0) 18.3%,
+      rgb(94,255,0) 21.7%, rgb(163,255,0) 25.2%, rgb(225,255,0) 28.7%, rgb(255,255,0) 30.4%,
+      rgb(255,190,0) 33.9%, rgb(255,119,0) 37.4%, rgb(255,0,0) 41.7%, rgb(255,0,0) 46.1%,
+      rgb(220,0,0) 51.3%, rgb(160,0,0) 56.5%, rgb(105,0,8) 61.7%, rgb(62,4,14) 65.2%,
+      rgb(38,12,22) 78%, rgb(30,22,34) 100%);
+    filter: saturate(0.82);
+  }
+  /* near-infrared: invisible to the eye, drawn as faint hatching */
+  .band::before {
+    content: ""; position: absolute; top: 0; bottom: 0; left: 65.2%; right: 0;
+    background: repeating-linear-gradient(135deg, rgba(255,255,255,0.07) 0 2px, transparent 2px 9px);
+  }
+  /* one scan on load, like the rotating metasurface sweeping the band */
+  .band::after {
+    content: ""; position: absolute; top: -2px; bottom: -2px; width: 3px; left: 0;
+    background: #fff; box-shadow: 0 0 10px 3px rgba(255,255,255,0.85);
+    opacity: 0; animation: scan 2.6s cubic-bezier(.45,.05,.35,1) 0.5s 1 forwards;
+  }
+  @keyframes scan {
+    0% { left: 0; opacity: 0; }
+    8% { opacity: 1; }
+    88% { opacity: 1; }
+    100% { left: calc(100% - 3px); opacity: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) { .band::after { animation: none; } }
+
+  .ticks { position: relative; height: 22px; margin-top: 6px; font-family: var(--display); font-size: 0.8rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .ticks span { position: absolute; transform: translateX(-50%); white-space: nowrap; }
+  .ticks span:first-child { transform: none; }
+  .ticks span:last-child { transform: translateX(-100%); }
+  .ticks span::before { content: ""; position: absolute; top: -6px; left: 50%; width: 1px; height: 5px; background: var(--muted); }
+  .ticks span:first-child::before { left: 0; }
+  .ticks span:last-child::before { left: auto; right: 0; }
+  .band-note { margin: 8px 0 0; font-size: 0.95rem; color: var(--muted); max-width: var(--measure); }
+
+  /* ---------- sections ---------- */
+  section { padding: 56px 0 8px; }
+  .sec { display: grid; grid-template-columns: 190px 1fr; gap: 36px; }
+  h2 {
+    font-family: var(--display); font-weight: 700; font-stretch: 112%;
+    font-size: 1.3rem; line-height: 1.2; margin: 4px 0 0; letter-spacing: -0.01em;
+  }
+  h3 {
+    font-family: var(--display); font-weight: 650; font-stretch: 100%;
+    font-size: 1.25rem; line-height: 1.25; margin: 0 0 4px;
+  }
+  .meta { font-family: var(--display); font-size: 0.93rem; color: var(--muted); margin: 0 0 10px; }
+
+  /* news */
+  .news { list-style: none; margin: 0; padding: 0; }
+  .news li { display: grid; grid-template-columns: 92px 1fr; gap: 14px; padding: 6px 0; }
+  .news time { font-family: var(--display); font-size: 0.93rem; color: var(--muted); padding-top: 2px; font-variant-numeric: tabular-nums; }
+
+  /* research */
+  .project { display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr); gap: 32px; padding: 0 0 44px; }
+  .project:last-child { padding-bottom: 8px; }
+  .project.textonly { grid-template-columns: 1fr; }
+  .project.textonly .body { max-width: var(--measure); }
+  .project figure { margin: 0; }
+  .project img { width: 100%; height: auto; display: block; border-radius: 4px; border: 1px solid var(--rule); background: #fff; }
+  .project figcaption { font-size: 0.88rem; color: var(--muted); margin-top: 8px; line-height: 1.45; }
+  .project p { margin: 0 0 12px; }
+  .tag {
+    display: inline-block; font-family: var(--display); font-size: 0.82rem; font-weight: 600;
+    color: var(--accent); background: var(--accent-soft); padding: 2px 9px; border-radius: 999px; margin: 0 6px 8px 0;
+  }
+  .plinks { font-family: var(--display); font-size: 0.95rem; }
+  .plinks a { margin-right: 16px; }
+
+  /* publications */
+  .pubs { margin: 0; padding-left: 1.3em; }
+  .pubs li { margin: 0 0 16px; padding-left: 4px; max-width: 72ch; }
+  .pubs .t { font-weight: 600; }
+  .pubs .v { font-style: italic; }
+  .award { font-family: var(--display); font-size: 0.85rem; font-weight: 600; color: #8a5a00; background: #fff4dc; padding: 1px 8px; border-radius: 999px; white-space: nowrap; }
+
+  /* experience */
+  .xp { list-style: none; margin: 0; padding: 0; }
+  .xp li { display: grid; grid-template-columns: 140px 1fr; gap: 18px; padding: 0 0 22px; }
+  .xp .when { font-family: var(--display); font-size: 0.93rem; color: var(--muted); padding-top: 3px; font-variant-numeric: tabular-nums; }
+  .xp h3 { font-size: 1.1rem; }
+  .xp .where { font-family: var(--display); font-size: 0.95rem; color: var(--muted); margin: 0 0 4px; }
+  .xp p { margin: 0; max-width: var(--measure); }
+
+  footer { border-top: 1px solid var(--rule); margin-top: 48px; padding: 22px 0 40px; font-family: var(--display); font-size: 0.9rem; color: var(--muted); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+  footer a { color: var(--muted); }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 880px) {
+    .sec { grid-template-columns: 1fr; gap: 18px; }
+    .project { grid-template-columns: 1fr; gap: 16px; }
+  }
+  @media (max-width: 640px) {
+    .wrap { padding: 0 20px; }
+    .top nav a { margin-left: 14px; }
+    .top nav a.hide-sm { display: none; }
+    .hero { padding-top: 40px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 24px; }
+    .portrait { order: -1; width: 120px; height: 120px; margin: 0; }
+    .ticks span.mid { display: none; }
+    .news li { grid-template-columns: 1fr; gap: 0; }
+    .xp li { grid-template-columns: 1fr; gap: 2px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <a class="mark" href="#">Arnab Ghosh</a>
+    <nav aria-label="Sections">
+      <a href="#research">Research</a>
+      <a class="hide-sm" href="#publications">Publications</a>
+      <a href="#experience">Experience</a>
+      <a href="assets/files/Arnab_Ghosh_CV.pdf">CV</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ================= HERO ================= -->
+    <section class="hero" aria-label="Introduction">
+      <div class="hero-grid">
+        <div>
+          <h1>Arnab Ghosh</h1>
+          <p class="role">PhD student in Electrical and Computer Engineering<br>University of California, Riverside</p>
+          <div class="bio">
+            <p>I build imaging systems end to end: the optics and sensors that capture light, and the physics-based and learned algorithms that turn those measurements into images. My recent work covers diffusion-based restoration under real sensor noise, metasurface spectrometers, and differentiable wave-optics simulation. I'm advised by Prof. Vishwanath Saragadam.</p>
+            <p>Before my PhD, I developed camera algorithms at OMNIVISION and spent three years as a computer vision engineer at L&amp;T Technology Services.</p>
+          </div>
+          <div class="links">
+            <a class="primary" href="assets/files/Arnab_Ghosh_CV.pdf">Download CV</a>
+            <a href="mailto:aghos034@ucr.edu">Email</a>
+            <a href="https://scholar.google.com/citations?user=zqR-GtcAAAAJ&amp;hl=en">Google Scholar</a>
+            <a href="https://github.com/alphalep">GitHub</a>
+            <a href="https://www.linkedin.com/in/arnabghosh3107">LinkedIn</a>
+          </div>
+        </div>
+        <img class="portrait" src="assets/img/avatar.jpg" alt="Portrait of Arnab Ghosh" width="200" height="200">
+      </div>
+
+      <div class="spectrum" aria-label="Spectrum from 405 to 980 nanometres">
+        <div class="band" role="img" aria-label="Visible spectrum from violet at 405 nm to red near 700 nm, then near-infrared to 980 nm"></div>
+        <div class="ticks" aria-hidden="true">
+          <span style="left:0%">405 nm</span>
+          <span class="mid" style="left:16.5%">500</span>
+          <span style="left:33.9%">600</span>
+          <span class="mid" style="left:51.3%">700</span>
+          <span style="left:68.7%">800</span>
+          <span class="mid" style="left:86.1%">900</span>
+          <span style="left:100%">980 nm</span>
+        </div>
+        <p class="band-note">405–980 nm: the band my Moiré meta-spectrometer covers by rotating one metasurface against another.</p>
+      </div>
+    </section>
+
+    <!-- ================= NEWS ================= -->
+    <section id="news" class="sec" aria-labelledby="news-h">
+      <h2 id="news-h">News</h2>
+      <ul class="news">
+        <li><time datetime="2026-07">Jul 2026</time><span>Our content-adaptive Moiré meta-spectrometer is <a href="https://arxiv.org/abs/2607.17256">on arXiv</a>.</span></li>
+        <li><time datetime="2026-06">Jun 2026</time><span><a href="https://ucr-vision-and-learning-group.github.io/CARD/">CARD</a> appeared at CVPR 2026.</span></li>
+        <li><time datetime="2024-09">Sep 2024</time><span>Started my PhD at UC Riverside.</span></li>
+        <li><time datetime="2024-03">Mar 2024</time><span>Joined OMNIVISION's camera algorithm team as a software algorithm intern.</span></li>
+        <li><time datetime="2023-11">Nov 2023</time><span>ShiVaNet won the Best Student Paper Award at IEEE WNYISPW.</span></li>
+      </ul>
+    </section>
+
+    <!-- ================= RESEARCH ================= -->
+    <section id="research" class="sec" aria-labelledby="research-h">
+      <h2 id="research-h">Research</h2>
+      <div>
+        <article class="project">
+          <figure>
+            <img src="assets/img/card.jpg" alt="Grid comparing ground truth, noisy input, CARD and DDRM results for denoising, deblurring and 4x super-resolution" width="729" height="586" loading="lazy">
+            <figcaption>Denoising, deblurring and 4× super-resolution under correlated noise. From the CVPR 2026 paper.</figcaption>
+          </figure>
+          <div class="body">
+            <span class="tag">CVPR 2026</span>
+            <h3>Restoring images under real, correlated sensor noise</h3>
+            <p>Rolling-shutter sensors produce spatially correlated noise, which breaks the independent-noise assumption behind most restoration methods. CARD whitens the measurement and then runs a pretrained diffusion model with closed-form updates, without retraining, for denoising, deblurring and super-resolution.</p>
+            <p>I modeled the sensor noise and built CIN-D: 400 real captures of 100 indoor and outdoor scenes at three noise levels, with long-exposure ground truth.</p>
+            <p class="plinks"><a href="https://ucr-vision-and-learning-group.github.io/CARD/">Project page</a><a href="https://arxiv.org/abs/2512.05268">arXiv</a></p>
+          </div>
+        </article>
+
+        <article class="project">
+          <figure>
+            <img src="assets/img/moire.jpg" alt="Schematic of the Moiré spectrometer: collimated broadband light passes a fixed and a rotating metasurface, which focus one wavelength at a time" width="725" height="396" loading="lazy">
+            <figcaption>Rotating the second metasurface changes which wavelength comes to focus.</figcaption>
+          </figure>
+          <div class="body">
+            <span class="tag">First author</span><span class="tag">Under review</span>
+            <h3>A spectrometer that looks closer only where the spectrum changes</h3>
+            <p>Two metasurfaces rotated against each other focus one wavelength at a time, turning a Moiré metalens pair into a compact 405–980 nm spectral scanner. A coarse-to-fine sampling algorithm then scans finely only where the spectrum has structure.</p>
+            <p>On a lab prototype this needs about 3× fewer measurements on average for the same fidelity, and up to 7× fewer for laser line spectra. Built with the University of Washington.</p>
+            <p class="plinks"><a href="https://arxiv.org/abs/2607.17256">arXiv</a></p>
+          </div>
+        </article>
+
+        <article class="project textonly">
+          <div class="body">
+            <span class="tag">Manuscript in preparation</span>
+            <h3>Differentiable simulation of coherent light</h3>
+            <p>A new differentiable method for simulating coherent light through lenses, apertures and diffractive elements, reaching wave-optics accuracy at a fraction of the cost of standard diffraction solvers. It is validated against established wave-optics solvers and commercial optical design software, and runs on the GPU in PyTorch for end-to-end optical design.</p>
+          </div>
+        </article>
+
+        <article class="project">
+          <figure>
+            <img src="assets/img/shivanet.jpg" alt="A sharp photograph of flowers beside the same scene blurred by simulated lens aberrations" width="512" height="256" loading="lazy">
+            <figcaption>A sharp image and the same scene with simulated lens-aberration blur.</figcaption>
+          </figure>
+          <div class="body">
+            <span class="tag">M.S. thesis</span><span class="tag">Best Student Paper</span>
+            <h3>Removing blur that changes across the field of view</h3>
+            <p>Real lenses blur differently at every point in the image. I simulated Seidel aberrations to generate shift-variant blur training pairs and designed ShiVaNet, a network built on learnable Wiener deconvolution with attention-based refinement, which outperformed state-of-the-art restoration models.</p>
+            <p class="plinks"><a href="https://repository.rit.edu/theses/11620">Thesis</a><a href="https://github.com/alphalep/ShiVaNet">Code</a></p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================= PUBLICATIONS ================= -->
+    <section id="publications" class="sec" aria-labelledby="pubs-h">
+      <h2 id="pubs-h">Publications</h2>
+      <ol class="pubs">
+        <li>
+          <span class="t">CARD: Correlation Aware Restoration with Diffusion.</span>
+          N. Nezakati, <strong>A. Ghosh</strong>, A. Roy-Chowdhury, V. Saragadam.
+          <span class="v">CVPR</span>, 2026.
+          <span class="plinks"><a href="https://ucr-vision-and-learning-group.github.io/CARD/">Project page</a><a href="https://arxiv.org/abs/2512.05268">arXiv</a></span>
+        </li>
+        <li>
+          <span class="t">Broadband Content-Adaptive Moiré Meta-spectrometer.</span>
+          <strong>A. Ghosh</strong>, J. E. Fröch, A. Majumdar, V. Saragadam.
+          Under review, 2026.
+          <span class="plinks"><a href="https://arxiv.org/abs/2607.17256">arXiv</a></span>
+        </li>
+        <li>
+          <span class="t">ShiVaNet: Shift Variant Image Deconvolution using Deep Learning.</span>
+          <strong>A. Ghosh</strong>, G. Swartzlander.
+          <span class="v">IEEE WNYISPW</span>, 2023. <span class="award">Best Student Paper</span>
+          <span class="plinks"><a href="https://repository.rit.edu/theses/11620">Thesis</a><a href="https://github.com/alphalep/ShiVaNet">Code</a></span>
+        </li>
+        <li>
+          <span class="t">Prefilter-Equalizer Based Structure: A New Design Strategy for Narrow-band FIR Filters.</span>
+          <strong>A. Ghosh</strong>, S. Roy, A. Chandra.
+          <span class="v">IEEE ASPCON</span>, 2018.
+        </li>
+      </ol>
+    </section>
+
+    <!-- ================= EXPERIENCE ================= -->
+    <section id="experience" class="sec" aria-labelledby="xp-h">
+      <h2 id="xp-h">Experience and education</h2>
+      <ul class="xp">
+        <li>
+          <div class="when">2024 – present</div>
+          <div>
+            <h3>PhD, Electrical and Computer Engineering</h3>
+            <p class="where">University of California, Riverside</p>
+            <p>Graduate student researcher in computational imaging, advised by Prof. Vishwanath Saragadam.</p>
+          </div>
+        </li>
+        <li>
+          <div class="when">Mar – Sep 2024</div>
+          <div>
+            <h3>Software Algorithm Intern</h3>
+            <p class="where">OMNIVISION, camera algorithm team, Santa Clara, CA</p>
+            <p>Built event-camera object detection with binarized neural networks on an in-house edge AI device, reaching 92% accuracy with quantization-aware training, and developed memory-efficient, low-power image processing for the same device.</p>
+          </div>
+        </li>
+        <li>
+          <div class="when">2021 – 2023</div>
+          <div>
+            <h3>M.S., Imaging Science</h3>
+            <p class="where">Rochester Institute of Technology</p>
+            <p>Graduate research assistant with Prof. Grover Swartzlander. Thesis on shift-variant image deconvolution with deep learning.</p>
+          </div>
+        </li>
+        <li>
+          <div class="when">2018 – 2021</div>
+          <div>
+            <h3>Senior Engineer, Computer Vision</h3>
+            <p class="where">L&amp;T Technology Services, Bengaluru</p>
+            <p>Built a real-time surround-view object-detection alarm system and an action-recognition pipeline, both deployed on NVIDIA Jetson TX2.</p>
+          </div>
+        </li>
+        <li>
+          <div class="when">2014 – 2018</div>
+          <div>
+            <h3>B.E., Instrumentation and Electronics Engineering</h3>
+            <p class="where">Jadavpur University, Kolkata</p>
+            <p>First Class with Honours.</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <span>Arnab Ghosh, 2026</span>
+    <span><a href="mailto:aghos034@ucr.edu">aghos034@ucr.edu</a></span>
+  </footer>
+</div>
+
+</body>
+</html>
